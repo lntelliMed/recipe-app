@@ -2,12 +2,14 @@ package com.lntellimed.recipe.domain;
 
 import javax.persistence.*;
 
-import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.util.Set;
 
-@Data
+@Getter
+@Setter
 @EqualsAndHashCode(exclude = { "recipes" })
 @Entity
 public class Category {
