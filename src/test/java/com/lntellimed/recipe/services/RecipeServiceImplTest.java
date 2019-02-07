@@ -9,6 +9,7 @@ import com.lntellimed.recipe.commands.RecipeCommand;
 import com.lntellimed.recipe.converters.RecipeCommandToRecipe;
 import com.lntellimed.recipe.converters.RecipeToRecipeCommand;
 import com.lntellimed.recipe.domain.Recipe;
+import com.lntellimed.recipe.exceptions.NotFoundException;
 import com.lntellimed.recipe.repositories.RecipeRepository;
 
 import java.util.HashSet;
@@ -38,6 +39,18 @@ public class RecipeServiceImplTest {
 
 		recipeService = new RecipeServiceImpl(recipeRepository, recipeCommandToRecipe, recipeToRecipeCommand);
 	}
+	
+    @Test(expected = NotFoundException.class)
+    public void getRecipeByIdTestNotFound() throws Exception {
+
+        Optional<Recipe> recipeOptional = Optional.empty();
+
+        when(recipeRepository.findById(anyLong())).thenReturn(recipeOptional);
+
+        Recipe recipeReturned = recipeService.findById(1L);
+
+        //should go boom
+    }
 
 	@Test
 	public void getRecipeByIdTest() throws Exception {
