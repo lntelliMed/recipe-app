@@ -3,6 +3,7 @@ spring:
     url: jdbc:mysql://localhost:3306/sfg_dev
     username: sfg_dev_user
     password: password
+    platform: mysql
   jpa:
     hibernate:
       ddl-auto: validate
@@ -16,4 +17,4 @@ spring:
 #            create-source: metadata
 #            scripts:
 #              action: create
-#              create-target: lntellimed_database_create.sql
+#              create-target: guru_database_create.sql
